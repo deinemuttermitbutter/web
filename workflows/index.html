@@ -1,32 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Video Player</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M3U8 Video Player</title>
 </head>
 <body style="background-color: black;">
-    <div>
-        <input type="text" id="videoUrl" placeholder="Enter .m3u8 URL">
-        <button id="playButton" style="background-color: cyan;">Play</button>
-    </div>
-    <div id="videoContainer">
-        <video id="videoPlayer" controls autoplay>
-            Your browser does not support the video tag.
-        </video>
-    </div>
+    <input type="text" id="videoUrl" placeholder="Enter M3U8 URL">
+    <button id="playButton" style="background-color: cyan; color: white;">Play</button>
+    <div id="videoContainer"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-<script>
-    document.getElementById('playButton').addEventListener('click', function () {
-        const videoUrl = document.getElementById('videoUrl').value;
-        const videoPlayer = document.getElementById('videoPlayer');
-
-        if (Hls.isSupported()) {
-            const hls = new Hls();
-            hls.loadSource(videoUrl);
-            hls.attachMedia(videoPlayer);
-        } else if (videoPlayer.canPlayType('application/vnd.apple.mpegurl')) {
-            videoPlayer.src = videoUrl;
-        }
-    });
-</script>
